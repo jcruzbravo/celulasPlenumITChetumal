@@ -1,0 +1,81 @@
+/* .section-unit3 h2{
+  font-size: 32px;
+}
+.section-unit3 h3{
+  font-size: 28px;
+}
+.section-unit3 ul{
+  font-size: 25px;
+} */
+html{
+  scroll-behavior: smooth;
+}
+hr{
+  border-style: solid;
+}
+/* ------Controlo diferentes backgrounds-------*/
+.bg-orangeu3{
+  background-color: orange;
+}
+.bg-blacku3{
+background-color: black;
+}
+.bg-skyblueu3{
+background-color: skyblue;
+}
+/*Controlo el diseño de mis enlaces en la unidad 3*/
+.enlacesu3 a{
+  font-size: 28px;
+}
+.enlacesu3 a:link {
+  color: black;
+}
+.enlacesu3 a:visited {
+  color: rgb(17, 64, 102);
+}
+.enlacesu3 a:focus {
+  border-bottom: 2px solid;
+  background: #003af7;
+}
+.enlacesu3 a:hover {
+  border-bottom: 1px solid;
+  background: #003af7;
+}
+
+.enlacesu3 a:active {
+  background: #265301;
+  color: #003af7;
+}
+/*--------------------------------------------------------*/
+/* ------Controlo diferentes tamaños de letra y color-------*/
+.text-40u3{
+font-size: 40px;
+}
+.text-32u3{
+font-size: 32px;
+}
+.text-28u3{
+font-size: 28px;
+}
+.text-orangeu3{
+color: orangered;
+}
+.text-blueu3{
+color: blue;
+}
+/*--------------------------------------------------------*/
+/*controlo que el texto este en el centro*/
+.text-centeru3{
+text-align: center;
+}
+/*--------------------------------------------------------*/
+/* me controla que las listas no ordenadas no tengan las viñetas*/
+.list-styleu3{
+list-style:none;
+}
+
+/*footeru3*/
+.tabla-footeru3{
+  margin: 0 auto;
+  text-align: center;
+}
