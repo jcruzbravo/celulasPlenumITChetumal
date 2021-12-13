@@ -1,0 +1,40 @@
+//Me trae todos los jugadores
+SELECT Jugador.Id_jugador, Jugador.Nombre, Jugador.Dorsal, Jugador.Posicion, Jugador.Pais, Jugador.Id_equipo
+FROM Jugador;
+//Me trae todos los equipos
+SELECT Equipo.Id_equipo, Equipo.Nombre, Equipo.Liga, Equipo.Pais
+FROM Equipo;
+
+Consulta usando INNER JOIN
+SELECT jugador.Id_jugador, jugador.Nombre, jugador.Dorsal, jugador.Posicion, jugador.Pais, jugador.Id_equipo, equipo.Id_equipo, equipo.Nombre_equipo, equipo.Liga, equipo.Pais
+FROM Jugador INNER JOIN Equipo ON Equipo.Id_equipo = Jugador.Id_equipo;
+
+Consulta usando LEFT JOIN
+SELECT jugador.Id_jugador, jugador.Nombre, jugador.Dorsal, jugador.Posicion, jugador.Pais, jugador.Id_equipo, equipo.Id_equipo, equipo.Nombre_equipo, equipo.Liga, equipo.Pais
+FROM Jugador LEFT JOIN Equipo ON Jugador.Id_equipo = Equipo.Id_equipo;
+
+Consulta usando RIGHT JOIN
+SELECT jugador.Id_jugador, jugador.Nombre, jugador.Dorsal, jugador.Posicion, jugador.Pais, jugador.Id_equipo, equipo.Id_equipo, equipo.Nombre_equipo, equipo.Liga, equipo.Pais
+FROM Jugador RIGHT JOIN Equipo ON Jugador.Id_equipo = Equipo.Id_equipo;
+
+Simulacion de INNER JOIN
+SELECT jugador.Id_jugador, jugador.Nombre, jugador.Dorsal, jugador.Posicion, jugador.Pais, jugador.Id_equipo, equipo.Id_equipo, equipo.Nombre_equipo, equipo.Liga, equipo.Pais FROM jugador, equipo WHERE jugador.Id_equipo = equipo.Id_equipo
+
+#Simulacion de left join
+SELECT jugador.Id_jugador, jugador.Nombre, equipo.Id_equipo, equipo.Nombre_equipo
+FROM equipo, jugador
+WHERE jugador.Id_equipo = equipo.Id_equipo
+UNION
+SELECT jugador.Id_jugador, jugador.Nombre, NULL,NULL
+FROM jugador
+WHERE jugador.Id_equipo NOT IN (SELECT equipo.Id_equipo FROM equipo)
+
+#Simulacion de right join
+SELECT jugador.Id_jugador, jugador.Nombre, equipo.Id_equipo, equipo.Nombre_equipo
+FROM jugador, equipo
+WHERE jugador.Id_equipo = equipo.Id_equipo
+UNION
+SELECT NULL, NULL, equipo.Id_equipo, equipo.Nombre_equipo
+FROM equipo
+WHERE  equipo.Id_equipo NOT IN (
+    SELECT jugador.Id_equipo FROM jugador);

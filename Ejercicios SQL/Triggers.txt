@@ -1,0 +1,38 @@
+-------Trigger que evita la eliminación directa de algun equipo registrado en la base de datos.-----------
+
+DELIMITER $$
+CREATE TRIGGER TR_BD_Equipo 
+BEFORE DELETE ON equipo 
+FOR EACH ROW 
+BEGIN 
+	SIGNAL SQLSTATE '02000' SET MESSAGE_TEXT = 'No se pueden eliminar equipos'; 
+END $$
+DELIMITER ;
+
+--------Trigger que evita la actualización del nombre de un equipo--------------
+
+CREATE TRIGGER TR_BU_NEquipo BEFORE UPDATE ON equipo FOR EACH ROW 
+BEGIN 
+SIGNAL SQLSTATE '02000' SET MESSAGE_TEXT = 'No se puede actualizar el nombre del equipo'; 
+END;
+
+-------Trigger que guarda informacion de que usuario insertó jugadores en la tabla jugador-----
+
+DELIMITER $$
+CREATE TRIGGER AI_Jugador
+AFTER INSERT ON jugador
+FOR EACH ROW
+BEGIN
+	INSERT INTO historialcambios 
+    	VALUES (NULL, current_user(), NOW());
+END $$
+DELIMITER ;
+
+
+INSERT INTO jugador (Id_jugador, Nombre, Dorsal, Posicion, Pais, Id_equipo)
+VALUES (10, 'Carlos Salcedo',6,'Mediocampista central', 'Colombia', NULL);
+
+DELETE FROM equipo WHERE Id_equipo = 1;
+
+UPDATE equipo SET equipo.Nombre = 'Pumas UNAM'
+WHERE Id_equipo = 2;
